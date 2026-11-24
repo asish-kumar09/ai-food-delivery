@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --primary:#ff4d00;
+    --primary-light:#ff7a00;
+    --bg:#050505;
+    --card-bg:rgba(18,18,18,0.72);
+    --glass:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.08);
+    --text:#ffffff;
+    --text-dim:rgba(255,255,255,0.65);
+    --danger:#ff3b30;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--bg);
+    overflow-x:hidden;
+}
+
+.dashboard-container{
+    min-height:100vh;
+    width:100%;
+    padding:130px 40px 50px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,77,0,0.14),
+        transparent 25%),
+        radial-gradient(circle at bottom right,
+        rgba(255,77,0,0.10),
+        transparent 25%),
+        #050505;
+}
+
+.dashboard-container::before,
+.dashboard-container::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(100px);
+    z-index:0;
+    animation:blobMove 8s infinite alternate ease-in-out;
+}
+
+.dashboard-container::before{
+    top:-100px;
+    left:-100px;
+    background:rgba(255,77,0,0.16);
+}
+
+.dashboard-container::after{
+    bottom:-120px;
+    right:-120px;
+    background:rgba(255,77,0,0.10);
+}
+
+@keyframes blobMove{
+    from{
+        transform:translate(0px,0px);
+    }
+    to{
+        transform:translate(40px,30px);
+    }
+}
+
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1350px;
+    height:78px;
+    background:rgba(15,15,15,0.72);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    z-index:1000;
+    box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+.name{
+    color:white;
+    font-size:1.8rem;
+    font-weight:700;
+    position:relative;
+    padding-left:18px;
+}
+
+.name::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 15px var(--primary);
+}
+
+.navbar ul{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+}
+
+.navbar ul li{
+    color:var(--text-dim);
+    cursor:pointer;
+    position:relative;
+    transition:0.3s ease;
+    font-weight:500;
+}
+
+.navbar ul li::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:var(--primary);
+    transition:0.3s ease;
+}
+
+.navbar ul li:hover{
+    color:white;
+    text-shadow:0 0 12px rgba(255,77,0,0.4);
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+}
+
+.dashboard-title{
+    color:white;
+    font-size:3rem;
+    font-weight:700;
+    margin:0 auto 35px;
+    max-width:1250px;
+    position:relative;
+    z-index:2;
+    animation:fadeUp 0.7s ease;
+}
+
+.food-grid{
+    width:100%;
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:28px;
+    position:relative;
+    z-index:2;
+}
+
+.food-card{
+    background:var(--card-bg);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+    transition:0.4s ease;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.35),
+        inset 0 1px 1px rgba(255,255,255,0.03);
+    animation:fadeUp 0.7s ease;
+}
+
+.food-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,77,0,0.22);
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.45),
+        0 0 25px rgba(255,77,0,0.10);
+}
+
+.food-content{
+    padding:25px;
+}
+
+.food-content h2{
+    color:white;
+    font-size:1.5rem;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.food-content p{
+    color:var(--text-dim);
+    line-height:1.7;
+    margin-bottom:12px;
+    font-size:0.95rem;
+}
+
+.food-price{
+    color:#ff925c !important;
+    font-size:1.1rem !important;
+    font-weight:600;
+}
+
+.notification-payment{
+    border-left:3px solid var(--primary);
+}
+
+.notification-delivery{
+    border-left:3px solid #28a745;
+}
+
+.notification-payment h2{
+    color:white;
+}
+
+.notification-delivery h2{
+    color:white;
+}
+
+.notification-label{
+    color:#ff925c !important;
+    font-weight:500;
+}
+
+.notification-delivery .notification-label{
+    color:#72d88b !important;
+}
+
+.footer{
+    width:100%;
+    max-width:1250px;
+    margin:70px auto 0;
+    padding:24px;
+    background:rgba(15,15,15,0.72);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-top:2px solid rgba(255,77,0,0.35);
+    border-radius:22px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.footer p{
+    color:rgba(255,255,255,0.7);
+    font-size:0.95rem;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0b0b;
+}
+
+::-webkit-scrollbar-thumb{
+    background:rgba(255,77,0,0.6);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--primary);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+@media(max-width:950px){
+    .dashboard-container{
+        padding:120px 30px 40px;
+    }
+
+    .dashboard-title{
+        font-size:2.4rem;
+    }
+
+    .food-grid{
+        grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    }
+}
+
+@media(max-width:768px){
+    .dashboard-container{
+        padding:120px 20px 40px;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .navbar ul{
+        gap:18px;
+    }
+
+    .dashboard-title{
+        font-size:2rem;
+    }
+
+    .food-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        padding:18px;
+        gap:15px;
+    }
+
+    .dashboard-container{
+        padding-top:180px;
+    }
+
+    .dashboard-title{
+        font-size:1.7rem;
+    }
+
+    .food-content{
+        padding:20px;
+    }
+}

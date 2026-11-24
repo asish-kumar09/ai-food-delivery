@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #ff4d00;
+    --primary-light: #ff7a00;
+    --bg: #050505;
+    --card-bg: rgba(18, 18, 18, 0.72);
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.65);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+/* MAIN CONTAINER & BACKGROUND GLOWS */
+.about-container {
+    min-height: 100vh;
+    width: 100%;
+    padding: 130px 40px 50px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(255, 77, 0, 0.14), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255, 77, 0, 0.10), transparent 25%),
+        #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-container::before,
+.about-container::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    animation: blobMove 8s infinite alternate ease-in-out;
+}
+
+.about-container::before {
+    top: -100px;
+    left: -100px;
+    background: rgba(255, 77, 0, 0.16);
+}
+
+.about-container::after {
+    bottom: -120px;
+    right: -120px;
+    background: rgba(255, 77, 0, 0.10);
+}
+
+@keyframes blobMove {
+    from { transform: translate(0px, 0px); }
+    to { transform: translate(40px, 30px); }
+}
+
+/* GLASS NAVBAR */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1350px;
+    height: 78px;
+    background: rgba(15, 15, 15, 0.72);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.name {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 18px;
+}
+
+.name::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+/* SEARCH BOX */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 4px 6px 4px 16px;
+    transition: 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color: rgba(255, 77, 0, 0.5);
+    box-shadow: 0 0 12px rgba(255, 77, 0, 0.2);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 0.9rem;
+    width: 220px;
+}
+
+.search-box input::placeholder {
+    color: var(--text-dim);
+}
+
+.search-box button {
+    background: linear-gradient(135deg, #ff4d00, #ff7a00);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.search-box button:hover {
+    box-shadow: 0 4px 15px rgba(255, 77, 0, 0.4);
+}
+
+/* NAVBAR LINKS */
+.navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.navbar ul li {
+    color: var(--text-dim);
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li:hover {
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 77, 0, 0.4);
+}
+
+.navbar ul li img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease;
+}
+
+.navbar ul li img:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(255, 77, 0, 0.5);
+}
+
+/* MAIN HEADING */
+.about-title {
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0 40px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.7s ease;
+}
+
+/* CONTENT SECTIONS (GLASS CARDS) */
+.company-section,
+.benefits-section,
+.terms-section {
+    width: 100%;
+    max-width: 1250px;
+    margin-bottom: 30px;
+    padding: 40px;
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.7s ease;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    transition: 0.35s ease;
+}
+
+.company-section:hover,
+.benefits-section:hover,
+.terms-section:hover {
+    border-color: rgba(255, 77, 0, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+}
+
+.company-section h2,
+.benefits-section h2,
+.terms-section h2 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.company-section h2::after,
+.benefits-section h2::after,
+.terms-section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff4d00, #ff7a00);
+    border-radius: 2px;
+}
+
+.company-section p,
+.benefits-section p,
+.terms-section p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.company-section p::before,
+.benefits-section p::before,
+.terms-section p::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.company-section p:last-child,
+.benefits-section p:last-child,
+.terms-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* DEMO NOTICE CARD */
+.demo-notice {
+    width: 100%;
+    max-width: 1250px;
+    margin-bottom: 30px;
+    padding: 25px 35px;
+    background: rgba(255, 77, 0, 0.06);
+    border: 1px solid rgba(255, 77, 0, 0.3);
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.7s ease;
+    backdrop-filter: blur(12px);
+}
+
+.demo-notice h3 {
+    color: #ff7a00;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.demo-notice p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    margin-top: 50px;
+    padding: 24px;
+    background: rgba(15, 15, 15, 0.72);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 2px solid rgba(255, 77, 0, 0.35);
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+/* ANIMATIONS & RESPONSIVE BREAKPOINTS */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0px); }
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .about-container {
+        padding-top: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .about-title {
+        font-size: 2.2rem;
+    }
+
+    .company-section,
+    .benefits-section,
+    .terms-section {
+        padding: 28px;
+    }
+
+    .company-section h2,
+    .benefits-section h2,
+    .terms-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .search-box input {
+        width: 140px;
+    }
+
+    .demo-notice {
+        padding: 20px;
+    }
+}

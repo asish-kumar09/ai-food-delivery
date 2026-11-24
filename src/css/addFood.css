@@ -1,0 +1,421 @@
+/* ================= GOOGLE FONT ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ================= GLOBAL ================= */
+/* ================= ROOT DESIGN SYSTEM ================= */
+
+:root{
+
+    --bg-primary:#070707;
+    --bg-secondary:#111111;
+    --glass-bg:rgba(255,255,255,0.06);
+
+    --primary:#ff4d00;
+    --primary-light:#ff7b00;
+    --primary-dark:#ff2f00;
+
+    --text-primary:#ffffff;
+    --text-secondary:#cfcfcf;
+
+    --border:rgba(255,255,255,0.08);
+
+    --shadow-primary:
+        0 10px 40px rgba(0,0,0,0.45);
+
+    --shadow-orange:
+        0 0 30px rgba(255,77,0,0.18);
+
+    --blur:18px;
+
+    --radius-lg:30px;
+    --radius-md:20px;
+    --radius-sm:14px;
+
+    --transition:0.35s ease;
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#070707;
+    overflow-x:hidden;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.addfood-container{
+    min-height:100vh;
+    width:100%;
+    padding:120px 20px 50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top left,#ff4d0025,transparent 30%),
+        radial-gradient(circle at bottom right,#ff730025,transparent 30%),
+        #070707;
+}
+
+/* ================= ANIMATED BLOBS ================= */
+
+.addfood-container::before,
+.addfood-container::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:0;
+    animation:blobFloat 8s infinite alternate ease-in-out;
+}
+
+.addfood-container::before{
+    background:#ff4d0035;
+    top:-100px;
+    left:-120px;
+}
+
+.addfood-container::after{
+    background:#ff880025;
+    bottom:-100px;
+    right:-120px;
+}
+
+@keyframes blobFloat{
+    from{
+        transform:translateY(0px) translateX(0px);
+    }
+    to{
+        transform:translateY(40px) translateX(25px);
+    }
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    height:75px;
+    padding:0 35px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    z-index:999;
+    box-shadow:
+        0 0 25px rgba(255,77,0,0.12);
+}
+
+/* ================= LOGO ================= */
+
+.name{
+    color:white;
+    font-size:1.7rem;
+    font-weight:700;
+    letter-spacing:1px;
+    position:relative;
+}
+
+.name::after{
+    content:"";
+    position:absolute;
+    top:8px;
+    right:-12px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#ff4d00;
+    box-shadow:0 0 15px #ff4d00;
+}
+
+/* ================= NAV LINKS ================= */
+
+.navbar ul{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.navbar ul li{
+    color:#f5f5f5;
+    font-size:0.97rem;
+    font-weight:500;
+    cursor:pointer;
+    position:relative;
+    transition:0.3s;
+}
+
+.navbar ul li::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:#ff4d00;
+    transition:0.4s;
+}
+
+.navbar ul li:hover{
+    color:#ff9b66;
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+}
+
+/* ================= FORM CARD ================= */
+
+.addfood-card{
+    width:100%;
+    max-width:600px;
+    padding:45px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.5),
+        0 0 25px rgba(255,77,0,0.08);
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    position:relative;
+    z-index:2;
+    animation:fadeUp 0.8s ease;
+    transition:0.4s ease;
+}
+
+.addfood-card:hover{
+    transform:translateY(-5px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.6),
+        0 0 35px rgba(255,77,0,0.18);
+}
+
+/* ================= TITLE ================= */
+
+.addfood-card h1{
+    color:white;
+    text-align:center;
+    font-size:2.4rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.addfood-card h1::after{
+    content:"";
+    display:block;
+    width:90px;
+    height:4px;
+    margin:12px auto 0;
+    border-radius:10px;
+    background:#ff4d00;
+    box-shadow:0 0 15px #ff4d00;
+}
+
+/* ================= INPUTS ================= */
+
+.addfood-card input,
+.addfood-card textarea,
+.addfood-card select{
+    width:100%;
+    padding:16px 18px;
+    border:none;
+    outline:none;
+    border-radius:16px;
+    background:rgba(255,255,255,0.06);
+    color:white;
+    font-size:0.96rem;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.35s ease;
+    resize:none;
+}
+
+.addfood-card textarea{
+    min-height:120px;
+}
+
+.addfood-card input::placeholder,
+.addfood-card textarea::placeholder{
+    color:#c9c9c9;
+}
+
+.addfood-card select{
+    color:#cfcfcf;
+}
+
+.addfood-card input:focus,
+.addfood-card textarea:focus,
+.addfood-card select:focus{
+    border-color:#ff4d00;
+    box-shadow:
+        0 0 0 3px rgba(255,77,0,0.15),
+        0 0 18px rgba(255,77,0,0.3);
+    transform:translateY(-2px);
+}
+
+/* ================= IMAGE PREVIEW ================= */
+
+.preview-image{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:22px;
+    margin-top:5px;
+    transition:0.5s ease;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.5);
+}
+
+.preview-image:hover{
+    transform:scale(1.02);
+}
+
+/* ================= BUTTON ================= */
+
+.addfood-card button{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#ff4d00,#ff8800);
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.35s ease;
+    box-shadow:
+        0 0 25px rgba(255,77,0,0.35);
+}
+
+.addfood-card button:hover{
+    transform:translateY(-4px) scale(1.01);
+    box-shadow:
+        0 0 35px rgba(255,77,0,0.7);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    width:92%;
+    margin-top:50px;
+    padding:24px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(18px);
+    border-top:2px solid #ff4d00;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+        0 0 20px rgba(255,77,0,0.12);
+    z-index:2;
+}
+
+.footer p{
+    color:#d6d6d6;
+    font-size:0.95rem;
+    letter-spacing:1px;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#ff4d00,#ff8800);
+    border-radius:20px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .navbar ul{
+        gap:18px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        padding:18px;
+        gap:15px;
+    }
+
+    .navbar ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .addfood-card{
+        padding:30px;
+    }
+
+    .addfood-card h1{
+        font-size:2rem;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .addfood-container{
+        padding:150px 15px 40px;
+    }
+
+    .addfood-card{
+        padding:24px;
+        border-radius:24px;
+    }
+
+    .preview-image{
+        height:200px;
+    }
+
+}

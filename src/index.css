@@ -1,0 +1,140 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Variables */
+
+:root {
+    --primary: #ff4d00;
+    --background: #0b0b0b;
+    --card: #151515;
+    --text: #ffffff;
+    --text-light: rgba(255,255,255,0.7);
+    --border: rgba(255,255,255,0.08);
+
+    font-family: "Poppins", system-ui, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: var(--text);
+    background: var(--background);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page */
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--background);
+}
+
+/* Root */
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Default Elements */
+
+body {
+    background: var(--background);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+input,
+select,
+textarea {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* GLOBAL NAVBAR FIX (POSITION & ALIGNMENT FOR ALL PAGES) */
+
+.navbar {
+    position: fixed !important;
+    top: 18px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    width: 92% !important;
+    max-width: 1350px !important;
+    height: 76px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    z-index: 9999 !important;
+}
+
+.navbar ul {
+    display: flex !important;
+    align-items: center !important;
+    gap: 24px !important;
+    list-style: none !important;
+}
+
+.navbar ul li {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.navbar ul li img {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 50% !important;
+}
+
+.navbar ul li:has(img)::after {
+    display: none !important;
+}

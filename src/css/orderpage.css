@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --primary:#ff4d00;
+    --primary-light:#ff7a00;
+    --success:#22c55e;
+    --danger:#ef4444;
+    --bg:#050505;
+    --card-bg:rgba(18,18,18,0.72);
+    --glass:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.08);
+    --text:#ffffff;
+    --text-dim:rgba(255,255,255,0.65);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050505;
+    overflow-x:hidden;
+}
+
+/* MAIN CONTAINER */
+
+.orderpage-container{
+    min-height:100vh;
+    width:100%;
+    padding:130px 40px 60px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,77,0,0.14),
+        transparent 25%),
+
+        radial-gradient(circle at bottom right,
+        rgba(255,77,0,0.10),
+        transparent 25%),
+
+        #050505;
+}
+
+/* FLOATING BLOBS */
+
+.orderpage-container::before,
+.orderpage-container::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(100px);
+    z-index:0;
+    animation:blobMove 8s infinite alternate ease-in-out;
+}
+
+.orderpage-container::before{
+    top:-100px;
+    left:-100px;
+    background:rgba(255,77,0,0.16);
+}
+
+.orderpage-container::after{
+    bottom:-120px;
+    right:-120px;
+    background:rgba(255,77,0,0.10);
+}
+
+@keyframes blobMove{
+    from{
+        transform:translate(0px,0px);
+    }
+    to{
+        transform:translate(40px,30px);
+    }
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1350px;
+    height:78px;
+    background:rgba(15,15,15,0.72);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    z-index:1000;
+    box-shadow:0 10px 30px rgba(0,0,0,0.45);
+}
+
+.name{
+    color:white;
+    font-size:1.8rem;
+    font-weight:700;
+    position:relative;
+    padding-left:18px;
+}
+
+.name::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 15px var(--primary);
+}
+
+.navbar ul{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+}
+
+.navbar ul li{
+    color:var(--text-dim);
+    cursor:pointer;
+    position:relative;
+    transition:0.3s ease;
+    font-weight:500;
+}
+
+.navbar ul li::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:var(--primary);
+    transition:0.3s ease;
+}
+
+.navbar ul li:hover{
+    color:white;
+    text-shadow:0 0 12px rgba(255,77,0,0.4);
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+}
+
+/* CONTENT */
+
+.orderpage-content{
+    width:100%;
+    max-width:1280px;
+    margin:auto;
+    padding:45px;
+    background:var(--card-bg);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:35px;
+    position:relative;
+    z-index:2;
+    animation:fadeUp 0.7s ease;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.45),
+        inset 0 1px 1px rgba(255,255,255,0.03);
+}
+
+/* HEADER */
+
+.orderpage-content h1{
+    color:white;
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.orderpage-content h1::after{
+    content:"Manage incoming customer orders seamlessly";
+    display:block;
+    font-size:1rem;
+    color:var(--text-dim);
+    font-weight:400;
+    margin-top:10px;
+}
+
+/* ORDER CARD */
+
+.order-card{
+    margin-top:35px;
+    padding:28px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s ease;
+    overflow:hidden;
+    position:relative;
+}
+
+.order-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,77,0,0.22);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.35),
+        0 0 20px rgba(255,77,0,0.10);
+}
+
+/* ORDER INFO SECTION FIX */
+
+.order-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* FOOD TITLE / HEADINGS */
+
+.order-card h2{
+    color:white;
+    font-size:2rem;
+    margin-bottom:6px;
+    font-weight:700;
+}
+
+.order-food-items h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* DETAILS PARAGRAPHS */
+
+.order-card p{
+    color:var(--text-dim);
+    line-height:1.7;
+    font-size:0.96rem;
+    padding:12px 18px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s ease;
+    width: 100%;
+}
+
+.order-card p:hover{
+    border-color:rgba(255,77,0,0.15);
+    box-shadow:0 0 18px rgba(255,77,0,0.08);
+}
+
+/* FOOD ITEMS LIST SECTION */
+
+.order-food-items{
+    background: rgba(255, 255, 255, 0.02);
+    padding: 18px;
+    border-radius: 16px;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.food-item-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-dim);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+.food-item-row:last-child {
+    border-bottom: none;
+}
+
+/* BUTTON CONTAINER */
+
+.btn-box{
+    display:flex;
+    gap:18px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+/* APPROVE BUTTON */
+
+.approve-btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        var(--success),
+        #16a34a
+    );
+    color:white;
+    font-size:0.95rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.35s ease;
+    box-shadow:0 10px 25px rgba(34,197,94,0.25);
+}
+
+.approve-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(34,197,94,0.35);
+}
+
+/* CANCEL BUTTON */
+
+.cancel-btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        var(--danger),
+        #dc2626
+    );
+    color:white;
+    font-size:0.95rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.35s ease;
+    box-shadow:0 10px 25px rgba(239,68,68,0.25);
+}
+
+.cancel-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(239,68,68,0.35);
+}
+
+/* EMPTY STATE */
+
+.orderpage-content > h2{
+    text-align:center;
+    color:white;
+    margin-top:60px;
+    font-size:2rem;
+    padding:50px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0b0b;
+}
+
+::-webkit-scrollbar-thumb{
+    background:rgba(255,77,0,0.6);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--primary);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .orderpage-content{
+        padding:30px;
+    }
+
+    .orderpage-content h1{
+        font-size:2.3rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .orderpage-container{
+        padding:120px 20px 40px;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .navbar ul{
+        gap:18px;
+    }
+
+    .orderpage-content{
+        padding:24px;
+    }
+
+    .orderpage-content h1{
+        font-size:2rem;
+    }
+}
+
+@media(max-width:550px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        padding:18px;
+        gap:15px;
+    }
+
+    .orderpage-container{
+        padding-top:180px;
+    }
+
+    .orderpage-content h1{
+        font-size:1.7rem;
+    }
+
+    .btn-box{
+        flex-direction:column;
+    }
+
+    .approve-btn,
+    .cancel-btn{
+        width:100%;
+    }
+}

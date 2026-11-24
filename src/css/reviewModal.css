@@ -1,0 +1,179 @@
+/* ==========================================================================
+   2. reviewModal.css (Compact Interactive Rating Modal)
+   ========================================================================== */
+.review-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.review-modal {
+    width: 90%;
+    max-width: 380px; /* Small, compact layout */
+    background: rgba(22, 22, 22, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 77, 0, 0.15);
+    animation: scaleUp 0.3s ease;
+}
+
+.review-modal h2 {
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.review-modal .food-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ff4d00;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.review-modal h3 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+/* DYNAMIC RATING COLOR TRANSITIONS */
+.star-box {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.star-box .star {
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    user-select: none;
+}
+
+.star-box .star:hover {
+    transform: scale(1.25);
+}
+
+/* 1 Star - Red */
+.star-box:has(.star:nth-child(1).active:not(.star:nth-child(2).active)) .star.active,
+.star-box:has(.star:nth-child(1):hover:not(.star:nth-child(2):hover)) .star:nth-child(-n+1) {
+    color: #ff334b;
+    text-shadow: 0 0 12px rgba(255, 51, 75, 0.6);
+}
+
+/* 2 Stars - Orange */
+.star-box:has(.star:nth-child(2).active:not(.star:nth-child(3).active)) .star.active,
+.star-box:has(.star:nth-child(2):hover:not(.star:nth-child(3):hover)) .star:nth-child(-n+2) {
+    color: #ff6600;
+    text-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
+}
+
+/* 3 Stars - Yellow */
+.star-box:has(.star:nth-child(3).active:not(.star:nth-child(4).active)) .star.active,
+.star-box:has(.star:nth-child(3):hover:not(.star:nth-child(4):hover)) .star:nth-child(-n+3) {
+    color: #ffbb00;
+    text-shadow: 0 0 12px rgba(255, 187, 0, 0.6);
+}
+
+/* 4 Stars - Lime Green */
+.star-box:has(.star:nth-child(4).active:not(.star:nth-child(5).active)) .star.active,
+.star-box:has(.star:nth-child(4):hover:not(.star:nth-child(5):hover)) .star:nth-child(-n+4) {
+    color: #a2e000;
+    text-shadow: 0 0 12px rgba(162, 224, 0, 0.6);
+}
+
+/* 5 Stars - Vibrant Green */
+.star-box:has(.star:nth-child(5).active) .star.active,
+.star-box:has(.star:nth-child(5):hover) .star:nth-child(-n+5) {
+    color: #00e676;
+    text-shadow: 0 0 14px rgba(0, 230, 118, 0.8);
+}
+
+.star-box .star.active {
+    color: #ffb700;
+}
+
+.review-modal textarea {
+    width: 100%;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 12px;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    resize: none;
+    margin-bottom: 18px;
+    transition: 0.3s ease;
+}
+
+.review-modal textarea:focus {
+    border-color: #ff4d00;
+    background: rgba(255, 77, 0, 0.05);
+}
+
+.review-modal .btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.review-modal button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.review-modal .cancel-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.review-modal .cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.review-modal .submit-btn {
+    background: linear-gradient(135deg, #ff4d00, #ff7a00);
+    color: white;
+    box-shadow: 0 6px 18px rgba(255, 77, 0, 0.3);
+}
+
+.review-modal .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(255, 77, 0, 0.45);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

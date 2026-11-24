@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff4d00;
+    --primary-glow: rgba(255, 77, 0, 0.35);
+    --bg-dark: #0a0a0a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+}
+
+.auth-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    padding: 20px 0;
+}
+
+.auth-container {
+    width: 95%;
+    max-width: 1200px;
+    height: 85vh; 
+    min-height: 750px;
+    display: flex;
+    background: rgba(15, 15, 15, 0.8);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Left Hero Graphic Section --- */
+.hero-section {
+    flex: 1.2;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    position: relative;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.animated-blobs {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: var(--primary);
+    filter: blur(140px);
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+    opacity: 0.25;
+    animation: move 12s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+.brand { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+.logo-dot { 
+    width: 12px; 
+    height: 12px; 
+    background: var(--primary); 
+    border-radius: 50%; 
+    box-shadow: 0 0 15px var(--primary); 
+}
+.brand h1 { 
+    color: white; 
+    font-size: 2rem; 
+    font-weight: 800; 
+    letter-spacing: -1px; 
+}
+
+.hero-content h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.floating-elements { 
+    position: relative; 
+    height: 180px; 
+}
+.glass-card {
+    position: absolute;
+    padding: 14px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.f-1 { top: 0; left: 0; animation: float 4s infinite ease-in-out; }
+.f-2 { top: 50px; left: 160px; animation: float 5s infinite ease-in-out 1s; }
+.f-3 { top: 110px; left: 30px; animation: float 6s infinite ease-in-out 0.5s; }
+
+/* --- Right Side Input Form UI --- */
+.form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #121212;
+    overflow-y: auto;
+}
+
+/* Custom internal scroll bar styling if profile data overflows */
+.form-section::-webkit-scrollbar {
+    width: 6px;
+}
+.form-section::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.auth-card { 
+    width: 100%; 
+    max-width: 420px; 
+    animation: fadeInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+.form-header h2 { 
+    color: white; 
+    font-size: 2.2rem; 
+    margin-bottom: 6px; 
+    font-weight: 700;
+}
+.form-header p { 
+    color: var(--text-dim); 
+    margin-bottom: 28px; 
+    font-size: 0.95rem;
+}
+
+.input-group { 
+    margin-bottom: 18px; 
+}
+.input-group label { 
+    display: block; 
+    color: var(--text-dim); 
+    font-size: 0.85rem; 
+    margin-bottom: 6px; 
+    font-weight: 500;
+}
+
+/* Utility layout wrapper for side by side grid values (lat/long or phone/email) */
+.input-row {
+    display: flex;
+    gap: 16px;
+}
+.input-row .input-group {
+    flex: 1;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon { 
+    position: absolute; 
+    left: 16px; 
+    color: var(--text-dim); 
+    font-size: 0.95rem; 
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+.input-wrapper input:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 4px var(--primary-glow); 
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.eye-icon { 
+    position: absolute; 
+    right: 16px; 
+    color: var(--text-dim); 
+    cursor: pointer; 
+    display: flex; 
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+.eye-icon:hover {
+    color: white;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+.main-btn:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 20px var(--primary-glow); 
+}
+.main-btn:active {
+    transform: translateY(0);
+}
+
+.redirect-text { 
+    text-align: center; 
+    color: var(--text-dim); 
+    margin-top: 20px; 
+    font-size: 0.9rem;
+}
+.redirect-text span { 
+    color: var(--primary); 
+    cursor: pointer; 
+    font-weight: 700; 
+    transition: opacity 0.2s;
+}
+.redirect-text span:hover {
+    text-decoration: underline;
+}
+
+/* --- Animations --- */
+@keyframes move {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(40px, 30px) scale(1.1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+    .hero-section { display: none; }
+    .auth-container { max-width: 520px; height: auto; min-height: initial; border-radius: 20px; }
+    .form-section { padding: 40px 30px; }
+}

@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #ff4d00;
+    --primary-light: #ff7a00;
+    --bg: #050505;
+    --card-bg: rgba(18, 18, 18, 0.72);
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.65);
+    --error: #ff3333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+.payment-container {
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    background: 
+        radial-gradient(circle at top left, rgba(255, 77, 0, 0.14), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255, 77, 0, 0.10), transparent 25%),
+        #050505;
+    color: white;
+}
+
+.payment-container::before,
+.payment-container::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    animation: blobMove 8s infinite alternate ease-in-out;
+}
+
+.payment-container::before {
+    top: -100px;
+    left: -100px;
+    background: rgba(255, 77, 0, 0.16);
+}
+
+.payment-container::after {
+    bottom: -120px;
+    right: -120px;
+    background: rgba(255, 77, 0, 0.10);
+}
+
+@keyframes blobMove {
+    from {
+        transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(40px, 30px);
+    }
+}
+
+.navbar {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 18, 18, 0.72);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar .name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar li {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.navbar li:hover {
+    color: var(--primary-light);
+}
+
+.payment-card {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.7s ease;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+}
+
+.payment-card h2 {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.payment-card h3 {
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.food-section,
+.bill-section,
+.payment-method {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+}
+
+.food-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.food-item:last-child {
+    border-bottom: none;
+}
+
+.food-item p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+/* Matching JSX elements */
+.food-item div p:first-child {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.food-item > p {
+    color: var(--primary-light) !important;
+    font-size: 1rem !important;
+    font-weight: 600;
+}
+/* Customize button */
+.food-item button {
+    margin-top: 6px;
+    padding: 4px 9px;
+    border: none;
+    border-radius: 4px;
+    background: var(--primary-light);
+    color: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    width: auto;
+}
+
+/* Customization description */
+.food-item textarea {
+    display: block;
+    width: 280px;
+    min-height: 65px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+    font-size: 0.9rem;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.food-item textarea::placeholder {
+    color: var(--text-dim);
+}
+
+.food-item textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+}
+.food-name {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.food-price {
+    color: var(--primary-light) !important;
+    font-size: 1rem !important;
+    font-weight: 600;
+}
+
+.loading-text {
+    color: var(--text-dim);
+    text-align: center;
+    padding: 15px;
+}
+
+/* Bill section layout formatting */
+.bill-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    padding: 10px 0;
+}
+
+.bill-section div:last-child {
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.bill-section div:last-child span:last-child {
+    color: var(--primary-light);
+}
+
+.bill-row,
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    padding: 10px 0;
+}
+
+.total-row {
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.total-row span:last-child {
+    color: var(--primary-light);
+}
+
+/* Payment Method Radio Labels */
+.payment-method label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.payment-method label:hover {
+    border-color: rgba(255, 77, 0, 0.5);
+    background: rgba(255, 77, 0, 0.06);
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: rgba(255, 77, 0, 0.5);
+    background: rgba(255, 77, 0, 0.06);
+}
+
+.payment-method input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.payment-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.payment-option input:checked + span {
+    color: white;
+    font-weight: 500;
+}
+
+.payment-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff4d00, #ff7a00);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 77, 0, 0.3);
+}
+
+.payment-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 77, 0, 0.45);
+}
+
+.payment-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-box {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 77, 0, 0.08);
+    border: 1px solid rgba(255, 77, 0, 0.25);
+    border-radius: 15px;
+}
+
+.success-box h3 {
+    color: var(--primary-light);
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media (max-width: 700px) {
+    .payment-card {
+        padding: 30px 22px;
+        border-radius: 24px;
+    }
+
+    .payment-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .navbar {
+        padding: 15px 18px;
+    }
+
+    .navbar ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .payment-container {
+        padding: 12px;
+    }
+
+    .payment-card {
+        padding: 25px 18px;
+    }
+
+    .navbar .name {
+        font-size: 1.2rem;
+    }
+
+    .navbar li {
+        font-size: 0.8rem;
+    }
+
+    .food-section,
+    .bill-section,
+    .payment-method {
+        padding: 15px;
+    }
+}

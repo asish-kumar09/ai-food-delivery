@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #ff4d00;
+    --primary-light: #ff7a00;
+    --bg: #050505;
+    --card-bg: rgba(18, 18, 18, 0.72);
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.65);
+    --error: #ff3333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    background: var(--bg);
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* If you have a #root wrapper from CRA/Vite boilerplate, this
+   guarantees it never clips taller content */
+#root {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+}
+
+.auth-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 77, 0, 0.14), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255, 77, 0, 0.10), transparent 25%),
+        #050505;
+    display: flex;
+}
+
+.auth-container {
+    display: flex;
+    align-items: flex-start;      /* was default 'stretch' — stopped hero from ballooning */
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    overflow: visible;
+}
+
+/* HERO LEFT SECTION */
+.hero-section {
+    flex: 0.85;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 77, 0, 0.2), rgba(0, 0, 0, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;             /* pins hero while long forms scroll */
+    top: 40px;
+    align-self: flex-start;
+    min-height: calc(100vh - 80px);
+    border-right: 1px solid var(--border);
+    border-radius: 28px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.brand h1 {
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    color: var(--text);
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.hero-subtext {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* FORM RIGHT SECTION */
+.form-section {
+    flex: 1.15;
+    padding: 40px 35px;
+    min-height: 0;
+    overflow: visible;
+}
+
+.form-header {
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    color: var(--text);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.form-header p {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.auth-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.special-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 4px;
+    border-top: 1px dashed var(--border);
+    margin-top: 4px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.input-group label {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+.input-wrapper input,
+.modern-select {
+    width: 100%;
+    padding: 11px 14px 11px 38px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 0.88rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.input-wrapper input:focus,
+.modern-select:focus {
+    border-color: rgba(255, 77, 0, 0.6);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 12px rgba(255, 77, 0, 0.2);
+}
+
+.modern-select {
+    appearance: none;
+    cursor: pointer;
+    padding-left: 14px;
+}
+
+.modern-select option {
+    background: #121212;
+    color: white;
+}
+
+.select-icon {
+    position: absolute;
+    right: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s ease;
+}
+
+.eye-icon:hover {
+    color: white;
+}
+
+.terms-row {
+    margin-top: 4px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 26px;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 17px;
+    width: 17px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background: linear-gradient(135deg, #ff4d00, #ff7a00);
+    border-color: #ff4d00;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.terms-link {
+    color: var(--primary);
+    text-decoration: underline;
+    margin-left: 4px;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff4d00, #ff7a00);
+    color: white;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 77, 0, 0.3);
+}
+
+.main-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 77, 0, 0.45);
+}
+
+.main-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.redirect-text {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.redirect-text span {
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.redirect-text span:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+    .auth-container {
+        flex-direction: column;
+    }
+
+    .hero-section {
+        display: none;
+    }
+
+    .form-section {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 580px) {
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Force-scroll override: neutralizes any global height:100vh / overflow:hidden --- */
+html, body, #root {
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.auth-wrapper {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+}
+
+.auth-container {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.hero-section {
+    position: static !important;   /* drop the sticky trick — it can fight a clipped parent */
+    min-height: auto !important;
+}
+
+.form-section {
+    max-height: none !important;
+    overflow: visible !important;
+}
+.auth-container {
+    display: flex;
+    align-items: stretch;      /* was flex-start — now hero matches form's full height */
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    overflow: visible;
+}
+.hero-section {
+    flex: 0.85;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 77, 0, 0.2), rgba(0, 0, 0, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+    border-radius: 28px;
+}
